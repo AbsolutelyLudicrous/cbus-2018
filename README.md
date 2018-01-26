@@ -20,6 +20,16 @@ Seriously, you can take a look at the code if you want.
 
 ### The Client, the app, the frontend
 
+#### Establishing the User's preferences
+
+Events presented to the user will have a simple "Like" and "Dislike" button, Reddit-style.
+Liking an event gives +1 to every associated tag, disliking an event gives -1 to every associated tag.
+
+On first run, the user will be presented with some sample tags, and asked to rank them.
+These first rankings are used to quickstart the user's preference selection, without having to wait for the user to like/dislike certain events.
+
+Tag rankings can be changed manually by the user at any time.
+
 #### Fetching appropriate content:
 
 Stores user preferences exclusively locally, never sent to our servers.
@@ -35,3 +45,20 @@ Bicycle Riding | +147
 Cold-War Reenactments | +34
 Nazi Party Rallies | -42
 Competitive Baby-eating | -74
+
+This particular user would get recommended a lot of Socialist events, but would receive relatively few baby-eating-related events.
+
+#### Ranking the received events
+
+The app would then query the server for a list of Socialist events, a list of bike events, and a list of Cold War events.
+It would first try to find the intersection of all three categories, a socialist bike race based around the Cold War, and then rank other received events according to how much the user likes associated tags and how many liked tags they have.
+
+The aforementioned socialist Cold War bike race would have a score of 437.
+A Cold War themed bicycle shop would have a score of 181.
+A Socialist baby-eating competition would have score of 182.
+
+### The Server, the backend
+
+#### Stored data
+
+The events database, and the tag database.

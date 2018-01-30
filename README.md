@@ -54,7 +54,38 @@ It would first try to find the intersection of all three categories, a socialist
 
 The aforementioned socialist Cold War bike race would have a score of 437.
 A Cold War themed bicycle shop would have a score of 181.
-A Socialist baby-eating competition would have score of 182.
+A Socialist baby-eating competition would have score of 182. 
+
+#### But wait! there's more!
+
+Hitting a like button for a particular event doesn't just update your user preferences, 
+the app will also store that event on its calendar locally on your device. When you start 
+the app up, you will see a calendar with all your liked events displayed. If you're 
+having second thoughts about going to a socialist baby-eating competition, you can simply 
+remove that event from your calendar. When an event you liked/saved is coming up in a few
+days, the app will send you push notifications to your mobile device so you won't forget
+to go to your favorite events. 
+
+#### Now you take charge
+
+##### The karma score
+
+There is no dirth of trolls in our world and our app's rating system helps deal with these
+hapless souls. Say you showed up to your socialist baby-eating competition, only to find
+your time wasted because it was fake. You can simply go back into the calendar, pull up
+your already-happened events and rate it with a like or dislike. The idiot user who
+created this fake event will have this factored into their karma score - so that in the
+future, this user's events will be ranked towards the bottom of the content anybody sees. 
+
+##### You can also post your own event
+
+Simply navigate to the "create an event" page and fill out information regarding to what
+your event is about, a date and time, your contact information and some relevant tags.
+Our app will check to make sure that there is no profanity in your listing, and then send
+your listing to our server. **That is the beauty of our platform, users who have 
+preferences towards the tags you specify in your event listing will find your event at 
+the top of your feed. It is the ultimate win-win!**
+
 
 ### The Server, the backend
 

@@ -73,7 +73,7 @@ to go to your favorite events.
 There is no dirth of trolls in our world and our app's rating system helps deal with these
 hapless souls. Say you showed up to your socialist baby-eating competition, only to find
 your time wasted because it was fake. You can simply go back into the calendar, pull up
-your already-happened events and rate it with a like or dislike. The idiot user who
+your already-happened events and report it for being a nonexistant event. The idiot user who
 created this fake event will have this factored into their karma score - so that in the
 future, this user's events will be ranked towards the bottom of the content anybody sees. 
 

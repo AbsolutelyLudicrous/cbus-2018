@@ -5,12 +5,12 @@
 
 ---
 
-I remember by mom talking about how she started a non-profit organization 
-and all the lengths she had to go to in building a network to support it. It seemed that 
+I remember by mom talking about how she started a community-based non-profit organization 
+and the lengths she had to go to in building a network to support its programming and outreach. It seemed that 
 finding people with similar interests to come to her events was much easier said than done.
-In her case, she had to help other related organizations so as to network with people who would be interested. Then, only after several months did she know enough people would come 
-to her event. Simply putting up a listing on the internet or sending a facebook blast would
-not be able to make enough people come. This was the inspiration behind our app.
+Simply putting up a listing on the internet or sending a facebook blast would
+not reach people in a timely manner. Her experience is echoed by other community based
+ not for profits and neighborhood organizations in the Columbus area that do not have enough funding to support a marketing campaign for their programs and outreach. This was the inspiration behind our app.
 
 Our app is a message board where aybody can post an event listing, and anybody can attend a posted event.
 The app will then notice, **without ever storing anything on our servers**, what types of events you seem to enjoy, and show you more of those. We also go one step further by adding
@@ -48,9 +48,9 @@ Socialist Meet-and-Greets | +256
 Bicycle Riding | +147
 Cold-War Reenactments | +34
 Nazi Party Rallies | -42
-Competitive Baby-eating | -74
+Competitive Pickle-eating | -74
 
-This particular user would get recommended a lot of Socialist events, but would receive relatively few baby-eating-related events.
+This particular user would get recommended a lot of Socialist events, but would receive relatively few pickle-eating-related events.
 
 #### Ranking the received events
 
@@ -59,14 +59,14 @@ It would first try to find the intersection of all three categories, a socialist
 
 The aforementioned socialist Cold War bike race would have a score of 437.
 A Cold War themed bicycle shop would have a score of 181.
-A Socialist baby-eating competition would have score of 182. 
+A Socialist pickle-eating competition would have score of 182. 
 
 #### But wait! there's more!
 
 Hitting a like button for a particular event doesn't just update your user preferences, 
 the app will also store that event on its calendar locally on your device. When you start 
 the app up, you will see a calendar with all your liked events displayed. If you're 
-having second thoughts about going to a socialist baby-eating competition, you can simply 
+having second thoughts about going to a socialist pickle-eating competition, you can simply 
 remove that event from your calendar. When an event you liked/saved is coming up in a few
 days, the app will send you push notifications to your mobile device so you won't forget
 to go to your favorite events. 
@@ -76,7 +76,7 @@ to go to your favorite events.
 ##### The karma score
 
 There is no dirth of trolls in our world and our app's rating system helps deal with these
-hapless souls. Say you showed up to your socialist baby-eating competition, only to find
+hapless souls. Say you showed up to your socialist pickle-eating competition, only to find
 your time wasted because it was fake. You can simply go back into the calendar, pull up
 your already-happened events and report it for being a nonexistant event. The idiot user who
 created this fake event will have this factored into their karma score - so that in the

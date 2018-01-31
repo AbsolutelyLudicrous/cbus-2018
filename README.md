@@ -1,7 +1,7 @@
 # CBUS 2018
 
 
-## A cool new app for finding events you want to go to and posting events that others want to come to.
+## A cool new app to connect with your community 
 
 ---
 
@@ -12,7 +12,8 @@ Simply putting up a listing on the internet or sending a facebook blast would
 not reach people in a timely manner. Her experience is echoed by other community based
  not for profits and neighborhood organizations in the Columbus area that do not have enough funding to support a marketing campaign for their programs and outreach. This was the inspiration behind our app.
 
-Our app is a message board where aybody can post an event listing, and anybody can attend a posted event.
+Our app is a message board for finding events you want to go to and posting events that 
+others want to come to.
 The app will then notice, **without ever storing anything on our servers**, what types of events you seem to enjoy, and show you more of those. We also go one step further by adding
 more features that enhance the user's ability to remember events and communicate 
 with event coordinators and fellow attendees as well as rate the credibility of another user. All communication will be secured so that a user's critical information is permanently
@@ -84,11 +85,11 @@ future, this user's events will be ranked towards the bottom of the content anyb
 
 ##### The group chat
 
-Say you're at an event and you have no idea what is going on. The app also will have a 
-group chat function so that you can chat with other users who also are attendees. Say you 
-are really lost - well you can also send a message to the user who posted this event 
-listing. All messages will be screened for profanity to ensure approriate content is being
-sent. 
+The app also will have a 
+group chat function so that you can chat with other users who also are attendees. This 
+helps people communicate with each other about the event and ask the host user questions 
+if they need clarifications. All messages will be screened for profanity to ensure 
+approriate content is being sent. 
 
 ##### You can also post your own event
 

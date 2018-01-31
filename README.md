@@ -107,7 +107,7 @@ the top of your feed. It is the ultimate win-win!**
 Our server will contain a database with all the posted event listings from our users. 
 As said before, the app will send the server the user's preferences and in return will get
 back a queried list of relevant events. This opens up a window for targeted advertising, in this case we would query a separate list of ads based on their similarity to the given 
-user's tag preference. **However, we will not keep a copy of the user's preferences/tag data on our servers. **Any information sent to us will be kept temporarily to query results - but as soon as the server has sent out the approriate data back to the user, that user's
+user's tag preference. **However, we will not keep a copy of the user's preferences/tag data on our servers.** Any information sent to us will be kept temporarily to query results - but as soon as the server has sent out the approriate data back to the user, that user's
 preferences will be destroyed.
 
 #### Secure communication

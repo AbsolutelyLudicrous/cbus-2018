@@ -1,17 +1,22 @@
-# cbus-2018
+# CBUS 2018
 
 
-## A community message board except it also has a calendar and doesn't spy on you.
+## A cool new app for finding events you want to go to and posting events that others want to come to.
 
 ---
 
-Ever wanted a publicly-accessible community message board?
-Sure you do!
-That's what this is, a message board where aybody can post an event listing, and anybody can attend a posted event.
-The app will then notice, **without ever sending anything to our servers**, what types of events you seem to enjoy, and show you more of those.
+I remember by mom talking about how she started a non-profit organization 
+and all the lengths she had to go to in building a network to support it. It seemed that 
+finding people with similar interests to come to her events was much easier said than done.
+In her case, she had to help other related organizations so as to network with people who would be interested. Then, only after several months did she know enough people would come 
+to her event. Simply putting up a listing on the internet or sending a facebook blast would
+not be able to make enough people come. This was the inspiration behind our app.
 
-Because that's what differentiates us from Facebook, **we don't track you**.
-Seriously, you can take a look at the code if you want.
+Our app is a message board where aybody can post an event listing, and anybody can attend a posted event.
+The app will then notice, **without ever storing anything on our servers**, what types of events you seem to enjoy, and show you more of those. We also go one step further by adding
+more features that enhance the user's ability to remember events and communicate 
+with event coordinators and fellow attendees as well as rate the credibility of another user. All communication will be secured so that a user's critical information is permanently
+known to them only.
 
 ---
 
@@ -77,6 +82,14 @@ your already-happened events and report it for being a nonexistant event. The id
 created this fake event will have this factored into their karma score - so that in the
 future, this user's events will be ranked towards the bottom of the content anybody sees. 
 
+##### The group chat
+
+Say you're at an event and you have no idea what is going on. The app also will have a 
+group chat function so that you can chat with other users who also are attendees. Say you 
+are really lost - well you can also send a message to the user who posted this event 
+listing. All messages will be screened for profanity to ensure approriate content is being
+sent. 
+
 ##### You can also post your own event
 
 Simply navigate to the "create an event" page and fill out information regarding to what
@@ -91,4 +104,15 @@ the top of your feed. It is the ultimate win-win!**
 
 #### Stored data
 
-The events database, and the tag database.
+Our server will contain a database with all the posted event listings from our users. 
+As said before, the app will send the server the user's preferences and in return will get
+back a queried list of relevant events. This opens up a window for targeted advertising, in this case we would query a separate list of ads based on their similarity to the given 
+user's tag preference. **However, we will not keep a copy of the user's preferences/tag data on our servers. **Any information sent to us will be kept temporarily to query results - but as soon as the server has sent out the approriate data back to the user, that user's
+preferences will be destroyed.
+
+#### Secure communication
+
+We understand that people's user preferences should be private to them, thus we will take 
+all steps to ensure that data is sent securely. **All connection between the app and our AWS 
+server will be SSL encrypted. The group chat function will also be encyrpted using an 
+implementation of Signal, an Open Whisper Systems product.**

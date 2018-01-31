@@ -5,7 +5,7 @@
 
 ---
 
-I remember by mom talking about how she started a community-based non-profit organization 
+I remember my mom talking about how she started a community-based non-profit organization 
 and the lengths she had to go to in building a network to support its programming and outreach. It seemed that 
 finding people with similar interests to come to her events was much easier said than done.
 Simply putting up a listing on the internet or sending a facebook blast would

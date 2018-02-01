@@ -5,15 +5,13 @@
 
 ---
 
-I remember my mom talking about how she started a community-based non-profit organization 
-and the lengths she had to go to in building a network to support its programming and outreach. It seemed that 
-finding people with similar interests to come to her events was much easier said than done.
-Simply putting up a listing on the internet or sending a facebook blast would
-not reach people in a timely manner. Her experience is echoed by other community based
- not for profits and neighborhood organizations in the Columbus area that do not have enough funding to support a marketing campaign for their programs and outreach. This was the inspiration behind our app.
+I remember my mom talking about how she started a community-based non-profit organization and the lengths she had to go to in building a network to support its programming and outreach.
+It seemed that finding people with similar interests to come to her events was much easier said than done.
+Simply putting up a listing on the internet or sending a facebook blast would not reach people in a timely manner.
+Her experience is echoed by other community based not-for-profits and neighborhood organizations in the Columbus area that do not have enough funding to support a marketing campaign for their programs and outreach.
+This was the inspiration behind our app.
 
-Our app is a message board for finding events you want to go to and posting events that 
-others want to come to.
+Our app is a message board for finding events you want to go to and posting events that others want to come to.
 The app will then notice, **without ever storing anything on our servers**, what types of events you seem to enjoy, and show you more of those. We also go one step further by adding
 more features that enhance the user's ability to remember events and communicate 
 with event coordinators and fellow attendees as well as rate the credibility of another user. All communication will be secured so that a user's critical information is permanently
@@ -62,43 +60,31 @@ The aforementioned socialist Cold War bike race would have a score of 437.
 A Cold War themed bicycle shop would have a score of 181.
 A Socialist pickle-eating competition would have score of 182. 
 
-#### But wait! there's more!
+#### User preference detection
 
-Hitting a like button for a particular event doesn't just update your user preferences, 
-the app will also store that event on its calendar locally on your device. When you start 
-the app up, you will see a calendar with all your liked events displayed. If you're 
-having second thoughts about going to a socialist pickle-eating competition, you can simply 
-remove that event from your calendar. When an event you liked/saved is coming up in a few
-days, the app will send you push notifications to your mobile device so you won't forget
-to go to your favorite events. 
+Hitting a like button for a particular event doesn't just update your user preferences, the app will also store that event on its calendar locally on your device.
+When you start the app up, you will see a calendar with all your liked events displayed.
+If you're having second thoughts about going to a socialist pickle-eating competition, you can simply remove that event from your calendar.
+When an event you liked/saved is coming up in a few days, the app will send you push notifications to your mobile device so you won't forget to go to your favorite events. 
 
-#### Now you take charge
+#### The karma score
 
-##### The karma score
+There is no dirth of trolls in our world and our app's rating system helps deal with these hapless souls.
+Say you showed up to your socialist pickle-eating competition, only to find your time wasted because it was fake.
+You can simply go back into the calendar, pull up your already-happened events and report it for being a nonexistant event.
+The idiot user who created this fake event will have this factored into their karma score - so that in the future, this user's events will be ranked towards the bottom of the content anybody sees. 
 
-There is no dirth of trolls in our world and our app's rating system helps deal with these
-hapless souls. Say you showed up to your socialist pickle-eating competition, only to find
-your time wasted because it was fake. You can simply go back into the calendar, pull up
-your already-happened events and report it for being a nonexistant event. The idiot user who
-created this fake event will have this factored into their karma score - so that in the
-future, this user's events will be ranked towards the bottom of the content anybody sees. 
+#### Event-local group chats
 
-##### The group chat
+The app also will have a group chat function so that you can chat with other users who also are attendees.
+This helps people communicate with each other about the event and ask the host user questions if they need clarifications.
 
-The app also will have a 
-group chat function so that you can chat with other users who also are attendees. This 
-helps people communicate with each other about the event and ask the host user questions 
-if they need clarifications. All messages will be screened for profanity to ensure 
-approriate content is being sent. 
+#### Event creation
 
-##### You can also post your own event
-
-Simply navigate to the "create an event" page and fill out information regarding to what
-your event is about, a date and time, your contact information and some relevant tags.
-Our app will check to make sure that there is no profanity in your listing, and then send
-your listing to our server. **That is the beauty of our platform, users who have 
-preferences towards the tags you specify in your event listing will find your event at 
-the top of your feed. It is the ultimate win-win!**
+Simply navigate to the "create an event" page and fill out information regarding to what your event is about, a date and time, your contact information and some relevant tags.
+Our app will check to make sure that there is no profanity in your listing, and then send your listing to our server.
+**That is the beauty of our platform, users who have preferences towards the tags you specify in your event listing will find your event at the top of your feed. 
+It is the ultimate win-win!**
 
 
 ### The Server, the backend

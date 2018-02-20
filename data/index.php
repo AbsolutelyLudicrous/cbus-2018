@@ -15,11 +15,9 @@
 		<h3>Index:</h3>
 		<p>
 			<?php
-				// echo '<pre>';
-				// echo '<print_r(scandir('.'));
-				// echo '<echo '</pre>';
+				$dir=getcwd();
 				foreach (scandir('.') as $file){
-					echo("<a href=\"http://cutie-computie.org/$file\">file</a><br>");
+					echo("<a href=\"http://cutie-computie.org/$dir/$file\">$file</a><br>");
 				}
 			?>
 		</p>

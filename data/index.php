@@ -15,7 +15,7 @@
 		<h3>Index:</h3>
 		<p>
 			<?php
-				echo(scandir("."));
+				echo(scandir("/usr/local/www/apache24"));
 			?>
 		</p>
 	</body>

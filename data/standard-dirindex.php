@@ -1,7 +1,7 @@
 <h3>Index:</h3>
 <p>
 	<?php
-		$leadingdirs=getenv($WEBSERVERROOT);	# root of the webserver, from where data is served, set in apache
+		$leadingdirs="/usr/local/www/apache24/data";	# directories leading up to the web server's hosted data
 		$rawdir=getcwd();	# raw, unstripped, directory location absolute to the file system
 		$dir=substr($rawdir, (strpos($rawdir,$leadingdirs)+strlen($leadingdirs)));	# stips the raw directory of the server root location
 		foreach (scandir('.') as $file){

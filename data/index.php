@@ -15,9 +15,12 @@
 		<h3>Index:</h3>
 		<p>
 			<?php
-				echo '<pre>';
-				print_r(scandir('.'));
-				echo '</pre>';
+				// echo '<pre>';
+				// echo '<print_r(scandir('.'));
+				// echo '<echo '</pre>';
+				foreach (scandir('.') as $file){
+					echo($file);
+				}
 			?>
 		</p>
 	</body>

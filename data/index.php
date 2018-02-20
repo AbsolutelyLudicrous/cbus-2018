@@ -19,7 +19,8 @@
 				// echo '<print_r(scandir('.'));
 				// echo '<echo '</pre>';
 				foreach (scandir('.') as $file){
-					echo('<a href="http://cutie-computie.org/','>foo</a>');//,getcwd(),'/',$file,'">',$file,'</a>','<br>');
+					echo("<a href=\"http://cutie-computie.org/${$(getcwd())}/$file\">file</a>");
+					//echo('<a href="http://cutie-computie.org/','>foo</a>');//,getcwd(),'/',$file,'">',$file,'</a>','<br>');
 				}
 			?>
 		</p>

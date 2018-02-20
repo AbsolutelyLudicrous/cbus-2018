@@ -16,7 +16,7 @@
 		<p>
 			<?php
 				$rawdir=getcwd();
-				$dir=substr($rawdir,strpos($rawdir,"/usr/local/www/apache24"),strlen($rawdir));
+				$dir=substr($rawdir, strpos($rawdir,"/usr/local/www/apache24"));
 				foreach (scandir('.') as $file){
 					echo("<a href=\"http://cutie-computie.org/$dir/$file\">$file</a><br>");
 				}

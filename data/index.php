@@ -3,21 +3,20 @@
 	<body>
 		<p>
 			I dunno, stuff?
-			<br>
+			<br><br>
 			What should go on a splash page you're not really meant to see?
-			(This, apparently.)
 			<br>
-			Hey nerds.
+			(This, apparently.)
+			<br><br>
+			Hey nerds!
 			If you want to checkout the backend, the real meat of... <i>this</i>, check out the <a href="https://github.com/AbsolutelyLudicrous/cbus-2018">Github repo</a>.
 		</p>
 
 		<h3>Index:</h3>
 		<p>
-			Foo?
 			<?php
-				echo('foo');
+				echo(scandir("."));
 			?>
-			Bar?
 		</p>
 	</body>
 </html>

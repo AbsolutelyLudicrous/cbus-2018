@@ -19,7 +19,12 @@
 				// echo '<print_r(scandir('.'));
 				// echo '<echo '</pre>';
 				foreach (scandir('.') as $file){
-					echo($file);
+					echo(
+						'<a href="http://cutie-computie.org/',getcwd(),'/'$file,'">',
+						$file,
+						'</a>',
+						'<br>'
+					);
 				}
 			?>
 		</p>

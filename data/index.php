@@ -20,9 +20,7 @@
 				// echo '<echo '</pre>';
 				foreach (scandir('.') as $file){
 					echo(
-						'<a href="http://cutie-computie.org/',$file,'">',
 						$file,
-						'</a>',
 						'<br>'
 					);
 				}

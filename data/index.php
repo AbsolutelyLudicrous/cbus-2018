@@ -15,10 +15,9 @@
 		<h3>Index:</h3>
 		<p>
 			<?php
-				$SERVERROOT="/usr/local/www/data";	# root of the webserver, from where data is served
+				$SERVERROOT="/usr/local/www/apache24/data";	# root of the webserver, from where data is served
 				$rawdir=getcwd();	# raw, unstripped, directory location absolute to the file system
 				$dir=substr($rawdir, (strpos($rawdir,$SERVERROOT)+strlen($SERVERROOT)));	# stips the raw directory of the server root location
-				echo $dir,'<br>';
 				foreach (scandir('.') as $file){
 					echo("<a href=\"http://cutie-computie.org$dir/$file\">$file</a><br>");
 				}

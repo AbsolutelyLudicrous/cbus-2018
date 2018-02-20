@@ -20,7 +20,7 @@
 				// echo '<echo '</pre>';
 				foreach (scandir('.') as $file){
 					echo(
-						'<a href="http://cutie-computie.org/',getcwd(),'/'$file,'">',
+						'<a href="http://cutie-computie.org/',getcwd(),'/',$file,'">',
 						$file,
 						'</a>',
 						'<br>'

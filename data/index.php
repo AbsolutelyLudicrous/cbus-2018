@@ -15,12 +15,11 @@
 		<h3>Index:</h3>
 		<p>
 			<?php
-				$rawdir=getcwd();
-				echo $rawdir;
-				$dir=substr($rawdir, strpos($rawdir,"/usr/local/www/apache24"));
-				echo $dir;
+				$SERVERROOT="/usr/local/www/data";	# root of the webserver, from where data is served
+				$rawdir=getcwd();	# raw, unstripped, directory location absolute to the file system
+				$dir=substr($rawdir, (strpos($rawdir,$SERVERROOT)+strlen($SERVERROOT)));	# stips the raw directory of the server root location
 				foreach (scandir('.') as $file){
-					echo("<a href=\"http://cutie-computie.org/$dir/$file\">$file</a><br>");
+					echo("<a href=\"http://cutie-computie.org$dir/$file\">$file</a><br>");
 				}
 			?>
 		</p>

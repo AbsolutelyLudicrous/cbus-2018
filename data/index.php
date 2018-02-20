@@ -13,6 +13,6 @@
 			<br>
 			<hr>
 		</p>
-		<?php include('standard-dirindex.php'); ?>
+		<?php include('index-footer.php'); ?>
 	</body>
 </html>

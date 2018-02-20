@@ -15,7 +15,8 @@
 		<h3>Index:</h3>
 		<p>
 			<?php
-				$dir=substr(getcwd(),strpos(getcwd(),"/usr/local/www/apache24"))
+				$rawdir=getcwd()
+				$dir=substr($rawdir,strpos($rawdir,"/usr/local/www/apache24"),strlen($rawdir));
 				foreach (scandir('.') as $file){
 					echo("<a href=\"http://cutie-computie.org/$dir/$file\">$file</a><br>");
 				}

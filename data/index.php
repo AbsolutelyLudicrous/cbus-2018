@@ -15,9 +15,9 @@
 		<h3>Index:</h3>
 		<p>
 			<?php
-				echo '<pre>';
+				echo '<pre>'
 				print_r(scandir('.'));
-				echo '</pre>';
+				echo '</pre>'
 			?>
 		</p>
 	</body>

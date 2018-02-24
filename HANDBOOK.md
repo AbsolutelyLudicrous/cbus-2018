@@ -58,4 +58,12 @@ They just provide a server and an IP address.
 
 ### DNS - Who does it, if not Linode?
 
+Hurricane Electric
 
+(I hadn't heard of them either.)
+
+DNS is the black magic that turns a human-readable domain name into an IP address.
+
+Why not use Linode's DNS, because they *do* offer it?
+
+Linode's DNS is borked and doesn't like to work always.

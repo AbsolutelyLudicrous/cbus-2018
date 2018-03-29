@@ -19,3 +19,15 @@ if __name__ == "__main__":
 		Good luck!
 		"""
 	)
+
+def get_user(u):
+	pass
+
+def set_user(u):
+	pass
+
+def get_user_attr(u,attr):
+	pass
+
+def set_user_attr(u,attr):
+	pass

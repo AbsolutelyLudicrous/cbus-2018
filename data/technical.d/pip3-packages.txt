@@ -1,0 +1,12 @@
+click
+Flask
+greenlet
+itsdangerous
+Jinja2
+MarkupSafe
+msgpack
+neovim
+pip
+setuptools
+Werkzeug
+wheel

@@ -21,13 +21,25 @@ if __name__ == "__main__":
 	)
 
 def get_user(u):
+	"""
+	Get all attributes of a specified user
+	"""
 	pass
 
-def set_user(u):
+def set_user(u,new_u):
+	"""
+	Set the attributes of a specified user
+	"""
 	pass
 
 def get_user_attr(u,attr):
+	"""
+	Get a single attribute from a user
+	"""
 	pass
 
 def set_user_attr(u,attr):
+	"""
+	Set a single attribute of a user
+	"""
 	pass

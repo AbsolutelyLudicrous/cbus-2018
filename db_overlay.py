@@ -8,5 +8,5 @@
 
 import sqlite3 as sqlite
 
-posts=sqlite.connect('posts.db')
-users=sqlite.connect('users.db')
+posts=sqlite.connect('dbs/posts.db')
+users=sqlite.connect('dbs/users.db')

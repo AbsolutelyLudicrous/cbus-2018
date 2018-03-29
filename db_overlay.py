@@ -10,3 +10,12 @@ import sqlite3 as sqlite
 
 posts=sqlite.connect('dbs/posts.db')
 users=sqlite.connect('dbs/users.db')
+
+if __name__ == "__main__":
+	print(	"""
+		Hey!, uh, you're a little bit supposed to use this as an imported module.
+		Like, it's fine if you need to hack something together real quick,
+		but this script is really just an abstraction layer over the sqlite3 API.
+		Good luck!
+		"""
+	)

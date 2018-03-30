@@ -14,8 +14,8 @@
 
 import sqlite3 as sqlite
 
-posts=sqlite.connect('dbs/posts.db').cursor()
 users=sqlite.connect('dbs/users.db').cursor()
+posts=sqlite.connect('dbs/posts.db').cursor()
 
 if __name__ == "__main__":
 	print(	"""
@@ -39,11 +39,7 @@ def add_user(uuid,username=None,name=None,pw=None):
 
 	try:
 		users.execute('''
-			CREATE TABLE '''+("user"+str(uuid))+''' (
-				username TEXT,
-				realname TEXT,
-				password TEXT,
-			);''',()
+			'''
 		)
 	except:
 		print("A fatal error occured when creating the user, perhaps the user already exists?")

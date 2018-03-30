@@ -16,6 +16,9 @@ data/wetty\.d
 #ignore python virtual environments
 *env
 
+#ignore the python cache
+__pycache__
+
 #don't track changes to the database proper
 dbs
 *database

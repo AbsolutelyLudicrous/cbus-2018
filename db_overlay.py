@@ -73,7 +73,7 @@ def get_user(u):
 	# try to return the requested user
 	try:
 		return users.execute('''
-			SELECT * FROM users WHERE UUUID="?";
+			SELECT * FROM users WHERE UUUID=?;
 			''',(u,)
 		)
 	except BaseException as e:

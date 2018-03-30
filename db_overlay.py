@@ -48,15 +48,18 @@ def add_user(uuid,username=None,name=None,pw=None):
 		''',(uuid,username,name,pw))
 	except:
 		print("A fatal error occured when creating the user, perhaps the user already exists?")
+		return 500	# internal server error
 
 	# save our changes
 	users_conn.commit()
+
+	return 200	# okay
 
 def get_user(u):
 	"""
 	Get all attributes of a specified user
 	Inputs:
-		u - the user to be gotten
+		u - the UUUID of the user to be gotten
 	"""
 	pass
 

@@ -26,7 +26,7 @@ if __name__ == "__main__":
 		"""
 	)
 
-def add_user(uuid,username=None,name=None,pw=None,prefs=None):
+def add_user(uuid,username=None,name=None,pw=None):
 	"""
 	Add a new user
 	Inputs:
@@ -35,19 +35,22 @@ def add_user(uuid,username=None,name=None,pw=None,prefs=None):
 		username - the username to be gotten, defaults to the UUID
 		name - the real name of the user
 		pw - the password hash of the user
-		prefs - the users preferences
 	"""
+
+	try:
+		users.execute('''
+			CREATE TABLE '''+("user"+str(uuid))+''' (
+				username TEXT,
+				realname TEXT,
+				password TEXT,
+			);''',()
+		)
+	except:
+		print("A fatal error occured when creating the user, perhaps the user already exists?")
+
 	users.execute('''
-		CREATE TABLE ? (
-			username TEXT,
-			realname TEXT,
-			password TEXT,
-			preferences TEXT
-		);''',(("user"+str(uuid)),)
-	)
-	users.execute('''
-		INSERT INTO ? (username,realname,password,preferences)
-		VALUES (?,?,?,?);''',(uuid,username,name,pw,prefs)
+		INSERT INTO '''+("user"+str(uuid))+''' (username,realname,password,preferences)
+		VALUES (?,?,?);''',(username,name,pw)
 	)
 
 def get_user(u):

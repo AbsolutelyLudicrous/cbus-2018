@@ -26,6 +26,28 @@ if __name__ == "__main__":
 		"""
 	)
 
+def add_user(uuid,username=uuid,name=None,pw=None,prefs=None):
+	"""
+	Add a new user
+	Inputs:
+		uuid - the UUID of the user to be added
+	Optional inputs:
+		username - the username to be gotten, defaults to the UUID
+		name - the real name of the user
+		pw - the password hash of the user
+		prefs - the users preferences
+	"""
+	users.execute('''
+		CREATE TABLE ? (
+			username TEXT,
+			realname TEXT,
+			password TEXT,
+			preferences TEXT
+		);''',uuid)
+	users.execute('''
+		INSERT INTO ? (username,realname,password,preferences)
+		VALUES (?,?,?,?);''',(uuid,username,name,pw,prefs))
+
 def get_user(u):
 	"""
 	Get all attributes of a specified user

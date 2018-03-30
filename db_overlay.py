@@ -175,9 +175,12 @@ def set_user_attr(u,attr,val):
 	try:
 		users.execute('''
 				UPDATE users
-				SET ?=?
+				SET '''+attr+'''=?
 				WHERE UUUID=?;
-			''',(attr,val,u)
+			''',(val,u)
+			#| doing string catenation in SQL would normally be insecure,
+			#| but we validate the attribute requested againt a list of valid attributes so it's hopefully fine
+			#| (also this is literally the only way to have a variable field be substituted, otherwise we get a syntax error)
 		)
 	except BaseException as e:
 		print(e)

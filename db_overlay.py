@@ -14,8 +14,11 @@
 
 import sqlite3 as sqlite
 
-users=sqlite.connect('dbs/users.db').cursor()
-posts=sqlite.connect('dbs/posts.db').cursor()
+# Connect to out DBs and get the cursors ready
+users_conn=sqlite.connect('dbs/users.db')
+users=users_conn.cursor()
+posts_conn=sqlite.connect('dbs/posts.db')
+posts=posts_conn.cursor()
 
 if __name__ == "__main__":
 	print(	"""
@@ -37,17 +40,17 @@ def add_user(uuid,username=None,name=None,pw=None):
 		pw - the password hash of the user
 	"""
 
+	# try to insert a column for a new user
 	try:
 		users.execute('''
-			'''
-		)
+				INSERT INTO users (UUUID,username,realname,password)
+				VALUES (?,?,?,?);
+		''',(uuid,username,name,pw))
 	except:
 		print("A fatal error occured when creating the user, perhaps the user already exists?")
 
-	users.execute('''
-		INSERT INTO '''+("user"+str(uuid))+''' (username,realname,password,preferences)
-		VALUES (?,?,?);''',(username,name,pw)
-	)
+	# save our changes
+	users_conn.commit()
 
 def get_user(u):
 	"""

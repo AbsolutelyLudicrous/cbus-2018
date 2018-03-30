@@ -72,10 +72,11 @@ def get_user(u):
 
 	# try to return the requested user
 	try:
-		return users.execute('''
+		users.execute('''
 			SELECT * FROM users WHERE UUUID=?;
 			''',(u,)
 		)
+		return users.fetchall()[0]	# the "[0]" on the end is needed because .fetchall returns a list of all matching columns
 	except BaseException as e:
 		print(e)
 		print("A fatal error occured while selecting the requested user")
@@ -87,7 +88,7 @@ def set_user(u,new_u):
 	"""
 	Set the attributes of a specified user
 	Inputs:
-		u - the user to be replaced
+		u - the UUUID of the user to be replaced
 		new_u - a complete representation of the new user
 	"""
 	pass
@@ -98,10 +99,26 @@ def get_user_attr(u,attr):
 	"""
 	Get a single attribute from a user
 	Inputs:
-		u - the user
+		u - the UUUID
 		attr - the attribute to be gotten
 	"""
-	pass
+
+	# define a dict containing the valid attributes we can access and their positions in the tuple returned by get_user
+	attrs={
+		"UUUID":0,
+		"username":1,
+		"realname":2,
+		"password":3	# AGAIN!, we do NOT do authentication in this module, do that in apy.py
+	}
+
+	# try to return the value corresponding to that attribute
+	try:
+		return get_user(u)[	# take the list returned by get_user
+			attrs[attr]	# ...and use the attrs dict to map the requested attribute to a numerical index
+		]
+	except BaseException as e:
+		print(e)
+		print("A fatal error occured while trying to fetch that attribute")
 
 
 

@@ -10,6 +10,9 @@
 	!!  IT IS ASSUMED THAT ALL REQUESTS TO THIS MODULE ARE PRE-AUTHENTICATED BY APY.PY, THIS MODULE DOES NOT DO ANY REQUEST AUTHETICATION  !!
 	!!                                                                                                                                     !!
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+	Great music to listen to while hacking on this API:
+		- https://www.youtube.com/watch?v=nSKp2StlS6s
 """
 
 import sqlite3 as sqlite
@@ -43,17 +46,22 @@ def add_user(uuid,username=None,name=None,pw=None):
 	# try to insert a column for a new user
 	try:
 		users.execute('''
-				INSERT INTO users (UUUID,username,realname,password)
-				VALUES (?,?,?,?);
-		''',(uuid,username,name,pw))
-	except:
+			INSERT INTO users (UUUID,username,realname,password)
+			VALUES (?,?,?,?);
+			''',(uuid,username,name,pw)
+		)
+	except BaseException as e:
+		print(e)
 		print("A fatal error occured when creating the user, perhaps the user already exists?")
 		return 500	# internal server error
 
 	# save our changes
 	users_conn.commit()
 
-	return 200	# okay
+	# http 200 okay
+	return 200
+
+
 
 def get_user(u):
 	"""
@@ -61,7 +69,19 @@ def get_user(u):
 	Inputs:
 		u - the UUUID of the user to be gotten
 	"""
-	pass
+
+	# try to return the requested user
+	try:
+		return users.execute('''
+			SELECT * FROM users WHERE UUUID="?";
+			''',(u,)
+		)
+	except BaseException as e:
+		print(e)
+		print("A fatal error occured while selecting the requested user")
+		return 500
+
+
 
 def set_user(u,new_u):
 	"""
@@ -72,6 +92,8 @@ def set_user(u,new_u):
 	"""
 	pass
 
+
+
 def get_user_attr(u,attr):
 	"""
 	Get a single attribute from a user
@@ -80,6 +102,8 @@ def get_user_attr(u,attr):
 		attr - the attribute to be gotten
 	"""
 	pass
+
+
 
 def set_user_attr(u,attr):
 	"""
@@ -90,9 +114,12 @@ def set_user_attr(u,attr):
 	"""
 	pass
 
+
+
 def get_post(p):
 	"""
 	Get the representation of a single post
 	Inputs:
 		p - the ID post to be gotten
 	"""
+	pass

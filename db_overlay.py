@@ -76,7 +76,14 @@ def get_user(u):
 			SELECT * FROM users WHERE UUUID=?;
 			''',(u,)
 		)
-		return users.fetchall()[0]	# the "[0]" on the end is needed because .fetchall returns a list of all matching columns
+		found_user = users.fetchall()[0]	# the "[0]" on the end is needed because .fetchall returns a list of all matching columns
+
+		# check that we have found a user with the requested UUUID
+		if found_user != []:
+			return found_user
+		else:
+			return 404
+
 	except BaseException as e:
 		print(e)
 		print("A fatal error occured while selecting the requested user")
@@ -90,6 +97,9 @@ def set_user(u,new_u):
 	Inputs:
 		u - the UUUID of the user to be replaced
 		new_u - a complete representation of the new user
+			has to be in the form:
+			(username,realname,password)
+			NOTE that you can not change the UUUID (duh, it's Universally Unique)
 	"""
 	pass
 
@@ -110,6 +120,10 @@ def get_user_attr(u,attr):
 		"realname":2,
 		"password":3	# AGAIN!, we do NOT do authentication in this module, do that in apy.py
 	}
+
+	if attr not in attrs:
+		print("That attribute does not exist!")
+		return 400
 
 	# try to return the value corresponding to that attribute
 	try:

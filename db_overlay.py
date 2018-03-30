@@ -83,7 +83,6 @@ def get_user(u):
 			return found_user
 		else:
 			return 404
-
 	except BaseException as e:
 		print(e)
 		print("A fatal error occured while selecting the requested user")
@@ -101,7 +100,27 @@ def set_user(u,new_u):
 			(username,realname,password)
 			NOTE that you can not change the UUUID (duh, it's Universally Unique)
 	"""
-	pass
+
+	# try to set the user with the new values
+	try:
+		users.execute('''
+				UPDATE users
+				SET	username=?,
+					realname=?,
+					password=?
+				WHERE UUUID=?
+			''',(new_u[0],new_u[1],new_u[2],u) # this is hacky and ugly, but list catenation didn't want to work so you know what ¯\_(ツ)_/¯
+		)
+	except BaseException as e:
+		print(e)
+		print("A fatal error occured while trying to re-set the user")
+		return 500
+
+	# commit our changes
+	users_conn.commit()
+
+	# http 200 okay
+	return 200
 
 
 

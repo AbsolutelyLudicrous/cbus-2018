@@ -11,8 +11,25 @@
 	!!                                                                                                                                     !!
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+	UNIVERSAL INPUT NOTE:
+		All of these functions use either strings or iterables for parameters
+		Passing us an integer is just asking for trouble
+
+	Method summaries:
+		add_user(string UUUID, opt string username, opt string realname, opt string password)
+		get_user(string UUUID)
+		set_user(string UUUID, iterable new_user)
+			iterable new_user takes form (username,realname,password)
+		get_user_attr(string UUUID, string attribute)
+		set_user_attr(string UUUID, string attribute, string new_attribute_value)
+
+	Return codes:
+		Each method defined here will return either a standard HTTP code as an integer or an iterable containing the requested values
+		Setters should always return HTTP codes; specifically 200 OKAY, 400 YOU FUCKED UP; or 500 WE FUCKED UP
+		Getters should only return HTTP codes when an error has occured, otherwise they will return the requested data
+
 	Great music to listen to while hacking on this API:
-		- https://www.youtube.com/watch?v=nSKp2StlS6s
+		You Give REST a Bad Name - https://www.youtube.com/watch?v=nSKp2StlS6s
 """
 
 import sqlite3 as sqlite

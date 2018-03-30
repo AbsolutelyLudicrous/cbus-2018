@@ -14,8 +14,8 @@
 
 import sqlite3 as sqlite
 
-posts=sqlite.connect('dbs/posts.db')
-users=sqlite.connect('dbs/users.db')
+posts=sqlite.connect('dbs/posts.db').cursor()
+users=sqlite.connect('dbs/users.db').cursor()
 
 if __name__ == "__main__":
 	print(	"""
@@ -26,7 +26,7 @@ if __name__ == "__main__":
 		"""
 	)
 
-def add_user(uuid,username=uuid,name=None,pw=None,prefs=None):
+def add_user(uuid,username=None,name=None,pw=None,prefs=None):
 	"""
 	Add a new user
 	Inputs:
@@ -43,10 +43,12 @@ def add_user(uuid,username=uuid,name=None,pw=None,prefs=None):
 			realname TEXT,
 			password TEXT,
 			preferences TEXT
-		);''',uuid)
+		);''',(("user"+str(uuid)),)
+	)
 	users.execute('''
 		INSERT INTO ? (username,realname,password,preferences)
-		VALUES (?,?,?,?);''',(uuid,username,name,pw,prefs))
+		VALUES (?,?,?,?);''',(uuid,username,name,pw,prefs)
+	)
 
 def get_user(u):
 	"""

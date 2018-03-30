@@ -156,14 +156,39 @@ def get_user_attr(u,attr):
 
 
 
-def set_user_attr(u,attr):
+def set_user_attr(u,attr,val):
 	"""
 	Set a single attribute of a user
 	Inputs:
-		u - the user
+		u - the UUUID of the user to be operated on
 		attr - the attribute to be set
+			can be either username, realname, or password
+		val - the value the attribute will be set to
 	"""
-	pass
+
+	# sanity check the attribute we were asked to set
+	if attr not in ("username","realname","password"):
+		print("That attribute either does not exist or is immutable!")
+		return 400
+
+	# try to set the value
+	try:
+		users.execute('''
+				UPDATE users
+				SET ?=?
+				WHERE UUUID=?;
+			''',(attr,val,u)
+		)
+	except BaseException as e:
+		print(e)
+		print("A fatal error occured while trying to set the value")
+		return 500
+
+	# save our changes
+	users_conn.commit()
+
+	# http 200 okay
+	return 200
 
 
 

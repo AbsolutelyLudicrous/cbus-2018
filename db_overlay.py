@@ -119,6 +119,7 @@ def get_user_attr(u,attr):
 	except BaseException as e:
 		print(e)
 		print("A fatal error occured while trying to fetch that attribute")
+		return 500
 
 
 

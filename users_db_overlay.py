@@ -99,7 +99,7 @@ def get_user(u):
 			print("Could not find a user by that UUUID!")
 			return 400
 		elif len(retrieved_users) > 1:
-			print("UwU theh was a fucksy-wucksie! We fwound muwtipuw users wif that UUUID!~~~ xP")	# this is staying in prod until I'm no longer the only person commiting to the repo
+			print("UwU theh was a fucksy-wucksie! We fwound muwtipuw users wif that UWUID!~~~ xP")	# this is staying in prod until I'm no longer the only person commiting to the repo
 			raise Exception("Fucking what!? Multple users found with same UUUID!")
 		else:
 			return retrieved_users[0]

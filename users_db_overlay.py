@@ -33,6 +33,7 @@
 """
 
 import sqlite3 as sqlite
+from db_bootstrap import users_schema
 
 # Connect to out DBs and get the cursors ready
 users_conn=sqlite.connect('dbs/users.db')
@@ -147,22 +148,15 @@ def get_user_attr(u,attr):
 		attr - the attribute to be gotten
 	"""
 
-	# define a dict containing the valid attributes we can access and their positions in the tuple returned by get_user
-	attrs={
-		"UUUID":0,
-		"username":1,
-		"realname":2,
-		"password":3	# AGAIN!, we do NOT do authentication in this module, do that in apy.py
-	}
-
-	if attr not in attrs:
+	# sanity checking
+	if attr not in users_schema:
 		print("That attribute does not exist!")
 		return 400
 
 	# try to return the value corresponding to that attribute
 	try:
-		return get_user(u)[	# take the list returned by get_user
-			attrs[attr]	# ...and use the attrs dict to map the requested attribute to a numerical index
+		return get_user(u)[			# take the list returned by get_user
+			users_schema.index(attr)	# and get its position in the list returned by get_user
 		]
 	except BaseException as e:
 		print(e)
@@ -182,8 +176,8 @@ def set_user_attr(u,attr,val):
 	"""
 
 	# sanity check the attribute we were asked to set
-	if attr not in ("username","realname","password"):
-		print("That attribute either does not exist or is immutable!")
+	if attr not in users_schema:
+		print("That attribute does not exist!")
 		return 400
 
 	# try to set the value

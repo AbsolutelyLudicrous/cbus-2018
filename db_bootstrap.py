@@ -16,20 +16,27 @@ import sqlite3 as sqlite
 
 users_schema=[
 	"UUUID",
-	"owned",
 	"username",
 	"realname",
 	"password"
 ]
 
+posts_schema=[
+	"PUUID",
+	"title",
+	"owner",
+	"contents",
+	"tags"
+]
+
 if __name__ == "__main__":
 	# if we're running the script to bootstrap the database
 
+	# users side of things
+
 	# get our cursors and connections ready
 	users_conn=sqlite.connect('dbs/users.db')
-	posts_conn=sqlite.connect('dbs/posts.db')
 	users=users_conn.cursor()
-	posts=posts_conn.cursor()
 
 	# turn the schema definition into a sqlized version
 	users_sqlized_schema=""
@@ -44,5 +51,27 @@ if __name__ == "__main__":
 	'''+users_sqlized_schema+''');
 	''')
 
+	# save changes and close connection
 	users_conn.commit()
 	users_conn.close()
+
+	# event posting side of things
+	posts_conn=sqlite.connect('dbs/posts.db')
+	posts=posts_conn.cursor()
+
+	# turn the schema definition into a sqlized version
+	posts_sqlized_schema=""
+	index=0
+	for field in posts_schema:
+		index+=1
+		posts_sqlized_schema+=(field+" TEXT")
+		posts_sqlized_schema+=(",\n\t" if index is not len(posts_schema) else "\n\t") # append a comma separator and a newline if this is not the last element in the users schema
+
+	posts.execute('''
+	CREATE TABLE posts (
+	'''+posts_sqlized_schema+''');
+	''')
+
+	# save changes and close connection
+	posts_conn.commit()
+	posts_conn.close()

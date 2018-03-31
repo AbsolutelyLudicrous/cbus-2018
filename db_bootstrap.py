@@ -56,6 +56,8 @@ if __name__ == "__main__":
 	users_conn.close()
 
 	# event posting side of things
+
+	# instantiate cursors and connection
 	posts_conn=sqlite.connect('dbs/posts.db')
 	posts=posts_conn.cursor()
 

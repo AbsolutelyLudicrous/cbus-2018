@@ -92,13 +92,17 @@ def get_user(u):
 			SELECT * FROM users WHERE UUUID=?;
 			''',(u,)
 		)
-		found_user = users.fetchall()[0]	# the "[0]" on the end is needed because .fetchall returns a list of all matching columns
+		retrieved_users = users.fetchall()
 
 		# check that we have found a user with the requested UUUID
-		if found_user != []:
-			return found_user
+		if len(retrieved_users) == 0:
+			print("Could not find a user by that UUUID!")
+			return 400
+		elif len(retrieved_users) > 1:
+			print("UwU theh was a fucksy-wucksie! We fwound muwtipuw users wif that UUUID!~~~ xP")	# this is staying in prod until I'm no longer the only person commiting to the repo
+			raise Exception("Fucking what!? Multple users found with same UUUID!")
 		else:
-			return 404
+			return retrieved_users[0]
 	except BaseException as e:
 		print(e)
 		print("A fatal error occured while selecting the requested user")

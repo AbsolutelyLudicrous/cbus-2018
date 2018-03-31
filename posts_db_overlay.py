@@ -65,9 +65,45 @@ def add_post(p,title=None,owner=None,contents=None,tags=None):
 		print(e)
 		print("A fatal error occurred while adding a new column to the event postings database")
 		return 500
-	
+
 	# save our changes
 	posts_conn.commit()
 
 	# http 200 okay
 	return 200
+
+
+
+def get_post(p):
+	"""
+	Get a post by PUUID
+	Inputs:
+		p - the PUUID
+	"""
+
+	try:
+		posts.execute('''
+			SELECT * FROM posts
+			WHERE PUUID=?;
+			''',(p,)
+		)
+		retrieved_posts=posts.fetchall()
+
+		if len(retrieved_posts) == 0:
+			print("Could not find any post by that PUUID")
+			return 400
+		elif len(retrieved_posts) > 1:
+			print("Found multiple posts by that PUUID!?!?")
+			raise Exception("What the fuck?! Found multiple event postings with that PUUID?! This shouldn't happen!")
+		else:
+			return retrieved_posts[0]
+
+	except BaseException as e:
+		print(e)
+		print("A fatal error occured while trying to retrive that post")
+		return 500
+
+
+
+def set_post(p,title,owner,contents,tags):
+	pass

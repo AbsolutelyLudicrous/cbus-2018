@@ -15,10 +15,19 @@
 		All of these functions use either strings or iterables for parameters
 		Passing us an integer is just asking for trouble
 
+	NOTICE ABOUT be_strict:
+		Don't override it!
+		I provided the option to do unsafe things if you really needed to, but keep in mind that:
+			0) apy.py is going to yell at you and probably tell you to go screw yourself
+			1) the "feature" may be (read: will be) deprecated in the future
+			2) it's only intended for development use
+			3) IT'S A SAFETY SWITCH, TURNING IT OFF IS UNSAFE AND COULD LEAD TO AN INSANE DATABASE
+
 	Method summaries:
-	!!OUT OF DATE, //TODO
-		add_user(string UUUID, opt string username, opt string realname, opt string password)
+		add_user(string UUUID, opt string username, opt string realname, opt string password, opt bool be_strict)
 		get_user(string UUUID)
+		get_user_by_username(string username, opt bool be_strict)
+		get_user_by_realname(string realname, opt bool be_strict)
 		set_user(string UUUID, iterable new_user)
 			iterable new_user takes form (username,realname,password)
 		get_user_attr(string UUUID, string attribute)
@@ -72,7 +81,7 @@ def add_user(uuid,username=None,name=None,pw=None,be_strict=True):
 			''',(username,)
 		)
 		retrieved_users = users.fetchall()
-		
+
 		# and check if that list contains anything
 		if len(retrieved_users) is not 0:
 			if be_strict:

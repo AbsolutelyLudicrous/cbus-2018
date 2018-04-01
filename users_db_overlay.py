@@ -129,7 +129,7 @@ def set_user(u,new_u):
 					realname=?,
 					password=?
 				WHERE UUUID=?
-			''',(new_u[0],new_u[1],new_u[2],u) # this is hacky and ugly, but list catenation didn't want to work so you know what ¯\_(ツ)_/¯
+			''',((new_u)+(u,))
 		)
 	except BaseException as e:
 		print(e)

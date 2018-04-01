@@ -16,6 +16,7 @@
 		Passing us an integer is just asking for trouble
 
 	Method summaries:
+	!!OUT OF DATE, //TODO
 		add_user(string UUUID, opt string username, opt string realname, opt string password)
 		get_user(string UUUID)
 		set_user(string UUUID, iterable new_user)
@@ -48,7 +49,7 @@ if __name__ == "__main__":
 		"""
 	)
 
-def add_user(uuid,username=None,name=None,pw=None):
+def add_user(uuid,username=None,name=None,pw=None,be_strict=True):
 	"""
 	Add a new user
 	Inputs:
@@ -57,10 +58,32 @@ def add_user(uuid,username=None,name=None,pw=None):
 		username - the username to be gotten, defaults to the UUID
 		name - the real name of the user
 		pw - the password hash of the user
+		be_strict - whether or not to throw an exception if adding the user would cause database insanity
+			(default behaviour is to throw an exception)
 	"""
 
 	# try to insert a column for a new user
 	try:
+		# check that our username isn't already taken
+
+		# get all users who already have our username
+		users.execute('''
+			SELECT * FROM users WHERE username=?;
+			''',(username,)
+		)
+		retrieved_users = users.fetchall()
+		
+		# and check if that list contains anything
+		if len(retrieved_users) is not 0:
+			if be_strict:
+				print("Username already reserved by a different user!")
+				raise Exception("Username already taken!")
+			else:
+				print("!!WARNING!!: username already taken!")
+				print("Strict error checking has been explicitly disabled, inserting record anyways!")
+				print("(Fuck you, by the way; stop performing dangerous operations)")
+
+		# sanity checks passed? Good! Now do the thing.
 		users.execute('''
 			INSERT INTO users (UUUID,username,realname,password)
 			VALUES (?,?,?,?);
@@ -103,6 +126,66 @@ def get_user(u):
 			raise Exception("Fucking what!? Multple users found with same UUUID!")
 		else:
 			return retrieved_users[0]
+	except BaseException as e:
+		print(e)
+		print("A fatal error occured while selecting the requested user")
+		return 500
+
+
+
+def get_user_by_username(un,be_strict=True):
+	"""
+	Get a UUUID by searching for a username
+	Inputs:
+		un - the UserName matching the user
+	Optional inputs:
+		be_strict - whether to throw an exception on insane responses or just keep chugging along
+			(default behaviour is throw exception)
+	"""
+
+	# try to return the requested user
+	try:
+		users.execute('''
+			SELECT * FROM users WHERE username=?;
+			''',(un,)
+		)
+		retrieved_users = users.fetchall()
+
+		# sanity check response
+		if len(retrieved_users) == 0:
+			print("Could not find a user by that username!")
+			return 400
+		elif len(retrieved_users) > 1:
+			print("Found multiple UUUIDs matching that username, which isn't supposed to happen. Somebody fucked up, and it was probably me.")
+			if be_strict:
+				raise Exception("Non-unique usernames detected!, database insanity has occured! UUUIDs of found usernames: "+retrieved_users)
+			else:
+				print("!!WARNING!!: found multiple UUUIDs referencing that username!, database insanity has occured!")
+				print("Returning first UUUID found so as not to cause a system crash!")
+				return retrieved_users[0]
+		else:
+			return retrieved_users[0]
+	except BaseException as e:
+		print(e)
+		print("A fatal error occured while selecting the requested user")
+		return 500
+
+
+
+def get_user_by_realname(rn):
+	"""
+	Get a UUUID by searching for a realname
+	Inputs:
+		rn - the RealName matching the user(s)
+	"""
+
+	# try to return the requested user
+	try:
+		users.execute('''
+			SELECT * FROM users WHERE realname=?;
+			''',(rn,)
+		)
+		return users.fetchall()
 	except BaseException as e:
 		print(e)
 		print("A fatal error occured while selecting the requested user")

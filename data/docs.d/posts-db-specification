@@ -15,6 +15,10 @@ Each event entry has the following attributes:
 					when a different event coordinator takes over a username, old events stick with the account
 	Contents, detailed information about the event
 		Can contain multiple sub-entries, see the example JSON
+	Comments, user comments on the event
+		Stored internally as a stringified dict
+	RSVPers, a list of users who are going to the event
+		Stored internally as a stringified list
 	Tags, tags associated with the event
 
 An example JSONified representation of a event entry might be as such:
@@ -27,5 +31,11 @@ An example JSONified representation of a event entry might be as such:
 		"location": "The YMCA down on Fifth Street"
 		"description": "Do you love fire? Do you love making fire? Come on down, we'll show you around! We love making fire too! Join the fire, embrace the lovely sensation that comes with burning things!"
 	}
+	"comments": {
+		"flameboy": "Can't wait to see my favorite thing: fire!"
+		"firehater89": "Fire is real bad! It killed my family!"
+		"the_police": "Sure hope there won't be anything illegal going on here! Y'alls got a license?"
+	}
+	"RSVPers": "['flameboy','not_the_police','R-Sonist','hotsau19ce']"
 	"tags": "fire,no cops,burn,flame,love,romance,fireplace,construction,destruction"
 }

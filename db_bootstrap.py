@@ -26,6 +26,8 @@ posts_schema=[
 	"title",
 	"owner",
 	"contents",
+	"comments",
+	"RSVPers",
 	"tags"
 ]
 

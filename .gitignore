@@ -20,7 +20,7 @@ data/wetty\.d
 __pycache__
 
 #don't track changes to the database proper
-dbs
+dbs/**
 *database
 *\.db
 *\.sql

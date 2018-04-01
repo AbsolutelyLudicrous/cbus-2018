@@ -97,7 +97,6 @@ def get_post(p):
 			raise Exception("What the fuck?! Found multiple event postings with that PUUID?! This shouldn't happen!")
 		else:
 			return retrieved_posts[0]
-
 	except BaseException as e:
 		print(e)
 		print("A fatal error occured while trying to retrive that post")
@@ -105,5 +104,28 @@ def get_post(p):
 
 
 
-def set_post(p,title,owner,contents,tags):
-	pass
+def set_post(p,new_p):
+	"""
+	Set every attribute of an event posting
+	Inputs:
+		p - the PUUID of the post to be set
+		new_p - the complete representation of the new post
+			takes the form: (title, owner, contents, tags)
+	"""
+
+	# try to completely set the post
+	try:
+		posts.execute('''
+				UPDATE posts
+				SET	title=?,
+					owner=?,
+					contents=?,
+					tags=?
+				WHERE PUUID=?;
+			''',((new_p)+(p,))
+		)
+		return 200
+	except BaseException as e:
+		print(e)
+		print("A fatal error occurred while trying to re-set that post!")
+		return 500

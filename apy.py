@@ -15,5 +15,14 @@ app = Flask(__name__)
 def index():
     return "Hello, World!"
 
+@app.route('/yeehaw')
+def yeehaw():
+	return "yeehaw"
+
+@app.route('/hello/<username>')
+def sayHi(username):
+	return "Hello " + username
+
+
 if __name__ == '__main__':
     app.run(debug=True)

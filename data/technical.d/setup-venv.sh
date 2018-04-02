@@ -34,6 +34,6 @@ virtualenv -p $(which python3) venv
 . venv/bin/activate
 
 # install all dependecy python packages from list
-for $pak in $(cat data/technical.d/pip3-packages.txt); do
+for pak in $(cat data/technical.d/pip3-packages.txt); do
 	pip3 install $pak
 done

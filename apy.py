@@ -31,6 +31,15 @@ def mkuser():
 		str(random.randint(111111111111,999999999999))
 	)))
 
+@app.route('/yeehaw')
+def yeehaw():
+	return "yeehaw"
+
+@app.route('/hello/<username>')
+def sayHi(username):
+	return "Hello " + username
+
+
 if __name__ == '__main__':
 	app.run(
 		debug=True, 

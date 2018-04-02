@@ -57,9 +57,9 @@ def add_post(p,title=None,owner=None,contents=None,tags=None):
 	# try to add a new column
 	try:
 		posts.execute('''
-			INSERT INTO posts (PUUID, title, owner, contents, tags)
+			INSERT INTO posts (PUUID, title, owner, contents, comments, RSVPers, tags)
 			VALUES (?,?,?,?,?);
-			''',(p,title,owner,contents,tags)
+			''',(p,title,owner,contents,"","",tags)
 		)
 	except BaseException as e:
 		print(e)
@@ -103,15 +103,13 @@ def get_post(p):
 		return 500
 
 
-
+"""
 def set_post(p,new_p):
-	"""
 	Set every attribute of an event posting
 	Inputs:
 		p - the PUUID of the post to be set
 		new_p - the complete representation of the new post
 			takes the form: (title, owner, contents, tags)
-	"""
 
 	# try to completely set the post
 	try:
@@ -129,3 +127,71 @@ def set_post(p,new_p):
 		print(e)
 		print("A fatal error occurred while trying to re-set that post!")
 		return 500
+
+
+
+"""
+
+def get_post_attr(p,attr):
+	"""
+	Get a single attribute from a user
+	Inputs:
+		p - the PUUUID
+		attr - the attribute to be gotten
+	"""
+
+	# sanity checking
+	if attr not in posts_schema:
+		print("That attribute does not exist!")
+		return 400
+
+	# try to return the value corresponding to that attribute
+	try:
+		return get_post(u)[			# take the list returned by get_user
+			posts_schema.index(attr)	# and get its position in the list returned by get_user
+		]
+	except BaseException as e:
+		print(e)
+		print("A fatal error occured while trying to fetch that attribute")
+		return 500
+
+
+
+
+
+def set_post_attr(p,attr,val):
+	"""
+	Set a single attribute of a user
+	Inputs:
+		p - the PUUUID of the user to be operated on
+		attr - the attribute to be set
+			can be used to set anything, primarily will be used to update the contents, RSVPers and comments fields 
+		val - the value the attribute will be set to
+	"""
+
+	# sanity check the attribute we were asked to set
+	if attr not in posts_schema:
+		print("That attribute does not exist!")
+		return 400
+
+	# try to set the value
+	try:
+		posts.execute('''
+				UPDATE posts
+				SET '''+attr+'''=?
+				WHERE PUUUID=?;
+			''',(val,p)
+			#| doing string catenation in SQL would normally be insecure,
+			#| but we validate the attribute requested againt a list of valid attributes so it's hopefully fine
+			#| (also this is literally the only way to have a variable field be substituted, otherwise we get a syntax error)
+		)
+	except BaseException as e:
+		print(e)
+		print("A fatal error occured while trying to set the value")
+		return 500
+
+	# save our changes
+	posts_conn.commit()
+
+	# http 200 okay
+	return 200

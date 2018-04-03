@@ -23,6 +23,15 @@ def index():
 def mkuser():
 	"""
 	Add a new user to the users database
+	Inputs:
+		JSONified form of a user, takes the form:
+			{
+				"user": {
+					"username": $username
+					"realname": $realname
+					"password": $password
+				}
+			}
 	"""
 
 	# generate our 32-character long UUUID
@@ -30,6 +39,17 @@ def mkuser():
 		str(hash(datetime.datetime.now))+
 		str(random.randint(111111111111,999999999999))
 	)))
+
+	if not flask.request.json or not "username" in flask.request.json or not "password" in flask.request.json:
+		abort(400)
+
+	# actually add the user
+	udb.add_user(
+		recruit_UUUID,
+		flask.request.json.get("username"),
+		flask.request.json.get("realname","anon"),
+		flask.request.json.get("password")
+	)
 
 @app.route('/howdy')
 @app.route('/yeehaw')
@@ -40,11 +60,14 @@ def yeehaw():
 def sayHi(username):
 	return "Hello " + username
 
+@app.errorhandler(404)
+def not_found(error):
+	return flask.make_response(jsonify({'error': 'Not found'}), 404)
 
 if __name__ == '__main__':
 	try:
 		app.run(
-			debug=config.is_debug, 
+			debug=config.is_debug,
 			host=config.system_ip,
 			port=config.port
 		)

@@ -31,6 +31,7 @@ def mkuser():
 		str(random.randint(111111111111,999999999999))
 	)))
 
+@app.route('/howdy')
 @app.route('/yeehaw')
 def yeehaw():
 	return "yeehaw"
@@ -41,8 +42,18 @@ def sayHi(username):
 
 
 if __name__ == '__main__':
-	app.run(
-		debug=config.is_debug, 
-		host=config.system_ip,
-		port=config.port
-	)
+	try:
+		app.run(
+			debug=config.is_debug, 
+			host=config.system_ip,
+			port=config.port
+		)
+	except:
+		try:
+			print("Configuration file failed!, falling back to some sane defaults.")
+			app.run(
+				debug=True,
+				host='127.0.0.1'
+			)
+		except:
+			print("Sane defaults failed, you're on your own!")

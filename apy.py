@@ -9,6 +9,7 @@
 from flask import Flask
 import datetime
 import random
+import config
 import users_db_overlay as udb
 import posts_db_overlay as pdb
 
@@ -41,7 +42,7 @@ def sayHi(username):
 
 if __name__ == '__main__':
 	app.run(
-		debug=True, 
-		host='104.237.152.214',
-		port=808
+		debug=config.is_debug, 
+		host=config.system_ip,
+		port=config.port
 	)

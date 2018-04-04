@@ -81,15 +81,13 @@ def mkuser():
 										)
 									)
 									+
-									hash(
-										str(
-											random.
-												randint(
-													1,
-													9999999999999999
-											)	# using randint isn't cryptographically secure, but we don't need crypto-level security for the UUUID
-										)
-									)
+									str(
+										random.
+											randint(
+												1,
+												9999999999999999
+											)
+									)	# using randint isn't cryptographically secure, but we don't need crypto-level security for the UUUID
 								)
 							)
 						)
@@ -108,13 +106,16 @@ def mkuser():
 		return 400
 
 	try:
-		# add the user
-		udb.add_user(recruit_UUUID, recruit_username, recruit_realname, recruit_password)
+		if udb.get_user_by_username(recruit_username) is not []:
+			# add the user
+			udb.add_user(recruit_UUUID, recruit_username, recruit_realname, recruit_password)
 	except BaseException as e:
 		print(e)
-		return 400
+		return """
+		Either somebody has already taken that username in the database or that is an invalid username.
+		""",405
 
-	return str(udb.get_user(recruit_UUUID))
+	return str(udb.get_user(recruit_UUUID)),200
 
 
 

@@ -1,0 +1,17 @@
+https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask
+	The REST quickstart tutorial for idiots
+
+http://flask.pocoo.org/docs/0.12/quickstart/#accessing-request-data
+	Official docs on Flask, anchored to more HTTP POST stuff
+
+https://stackoverflow.com/questions/10434599/how-to-get-data-received-in-flask-request#16664376
+	Using Flask to get data from HTTP POST
+
+https://stackoverflow.com/questions/988228/convert-a-string-representation-of-a-dictionary-to-a-dictionary#988251
+	Python3 - turning a stringified dict into a dictified string
+
+https://www.w3schools.com/sql
+	The SQL megareference
+
+https://docs.python.org/3/library/sqlite3.html
+	The Python3 docs on the sqlite3 RDB API

@@ -64,32 +64,57 @@ def mkuser():
 			}
 	"""
 
-	try:
-		# generate our 32-character long UUUID
-		recruit_UUUID=str(abs(int(
-			str(hash(datetime.datetime.now))+
-			str(random.randint(111111111111,999999999999))
-		)))
-	except:
-		return "Fucked up the UUUID gen!"
+	# W H I T E S P A C E M A K E S Y O U R C O D E M O R E R E A D A B L E
 
+	# generate our UUUID
+	recruit_UUUID=	str(
+				abs(
+					hash(
+						str(
+							abs(
+								int(
+									str(
+										hash(
+											datetime.
+												datetime.
+													now
+										)
+									)
+									+
+									hash(
+										str(
+											random.
+												randint(
+													1,
+													9999999999999999
+											)	# using randint isn't cryptographically secure, but we don't need crypto-level security for the UUUID
+										)
+									)
+								)
+							)
+						)
+					)
+				)
+			)
+
+	# try to pull user information out of received json, may fail if the JSONified user representation was incomplete
 	try:
 		# pull other information out of the JSON we got
 		recruit_username=request.get_json()["username"]
 		recruit_realname=request.get_json()["realname"]
 		recruit_password=request.get_json()["password"]
+	except BaseException as e:
+		print(e)
+		return 400
 
+	try:
 		# add the user
 		udb.add_user(recruit_UUUID, recruit_username, recruit_realname, recruit_password)
 	except BaseException as e:
 		print(e)
-		print("Failed adding or getting the user")
 		return 400
 
-	try:
-		return str(udb.get_user(recruit_UUUID))
-	except:
-		return "Fuck!"
+	return str(udb.get_user(recruit_UUUID))
 
 
 

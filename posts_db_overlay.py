@@ -30,7 +30,7 @@ import sqlite3 as sqlite
 from db_bootstrap import posts_schema
 
 # Connect to our DBs and get the cursors ready
-posts_conn=sqlite.connect('dbs/posts.db')
+posts_conn=sqlite.connect('dbs/posts.db', check_same_thread=False)
 posts=posts_conn.cursor()
 
 if __name__ == "__main__":
@@ -165,7 +165,7 @@ def set_post_attr(p,attr,val):
 	Inputs:
 		p - the PUUUID of the user to be operated on
 		attr - the attribute to be set
-			can be used to set anything, primarily will be used to update the contents, RSVPers and comments fields 
+			can be used to set anything, primarily will be used to update the contents, RSVPers and comments fields
 		val - the value the attribute will be set to
 	"""
 

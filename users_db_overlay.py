@@ -46,7 +46,7 @@ import sqlite3 as sqlite
 from db_bootstrap import users_schema
 
 # Connect to out DBs and get the cursors ready
-users_conn=sqlite.connect('dbs/users.db')
+users_conn=sqlite.connect('dbs/users.db', check_same_thread=False)
 users=users_conn.cursor()
 
 if __name__ == "__main__":

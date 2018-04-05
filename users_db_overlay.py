@@ -155,7 +155,7 @@ def get_user_by_username(un,be_strict=True):
 	# try to return the requested user
 	try:
 		users.execute('''
-			SELECT * FROM users WHERE username=?;
+			SELECT UUUID FROM users WHERE username=?;
 			''',(un,)
 		)
 		retrieved_users = users.fetchall()

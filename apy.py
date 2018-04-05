@@ -18,6 +18,35 @@ app = Flask(__name__)
 
 
 
+@app.route('/add-post', methods=['POST'])
+def add_post():
+	try:
+		post_username=request.get_json()["username"]
+		post_password = request.get_json()["password"]
+		post_title = request.get_json()["title"]
+		post_contents = request.get_json()["contents"]
+		post_tags = request.get_json()["tags"]
+	except BaseException as e:
+		print(e)
+		return 400
+
+	
+	post_UUUID = udb.get_user_by_username(post_username)
+	if (post_UUUID == 400):
+		return 400
+
+
+	actual_password = udb.get_user_attr(post_UUUID, "password")
+	if (actual_password == post_password):
+		#access granted
+				
+		recruit_PUUID=	str(abs(hash(str(abs(int(str(hash(datetime.datetime.now))+str(random.randint(1, 9999999999999999))))))))
+		pdb.add_post(recruit_PUUID, post_title, post_username, post_contents, post_tags)
+
+			
+		
+
+
 @app.route('/', methods=['GET'])
 def index():
 	return """

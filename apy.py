@@ -68,6 +68,10 @@ def sayHi(username):
 	return "Hello " + username
 
 
+@app.route('/get-events-by-tag/<tags>', methods=['GET'])
+def get_events_by_tags_abstract(tags):
+	the_events = pbd.get_events_by_tag(tags)
+	return the_events
 
 @app.route('/echo', methods=['POST'])
 def echo():

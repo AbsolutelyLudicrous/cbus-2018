@@ -25,7 +25,7 @@
 	Great music to listen to while hacking on this API:
 		You Give REST a Bad Name - https://www.youtube.com/watch?v=nSKp2StlS6s
 """
-
+import random
 import sqlite3 as sqlite
 from db_bootstrap import posts_schema
 
@@ -195,3 +195,52 @@ def set_post_attr(p,attr,val):
 
 	# http 200 okay
 	return 200
+
+
+def get_events_by_tag(tags):
+	list_tags = []
+	while (len(tags) > 0):
+		if ',' in tags:		
+			commaIndex = tags.index(',')
+			
+			list_tags.append(tags[0:commaIndex])
+			tags = tags[2:]
+		else:
+			#tags is empty
+			scores.append(tags)			
+			tags = ""
+	
+	list_events = []
+
+	for i in range(0, len(list_tags)):
+			
+		posts.execute('''
+			SELECT * FROM posts
+			WHERE Contains(tags, ?);
+			''',(list_tags[i],)
+		)
+	
+		retrieved_posts=posts.fetchall()
+		list_events.append(retrieved_posts)
+
+	return_list = []
+	for i in range(0, 50):
+		the_event = random.choice(random.choice(list_events))
+		return_list.append(the_event)
+
+	while i < (len(return_list) - 1):
+		j = i+1
+		while j < len(return_list):
+			if (return_list[i][posts_schema.index("PUUID")] == return_list[j][posts_schema.index("PUUID")]):
+				return_list.pop(j)
+			j += 1
+		i += 1
+
+	return return_list
+
+
+
+
+
+
+

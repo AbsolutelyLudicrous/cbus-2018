@@ -191,7 +191,7 @@ def get_user_by_realname(rn):
 	# try to return the requested user
 	try:
 		users.execute('''
-			SELECT * FROM users WHERE realname=?;
+			SELECT UUUID FROM users WHERE realname=?;
 			''',(rn,)
 		)
 		return users.fetchall()

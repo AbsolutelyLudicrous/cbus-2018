@@ -78,10 +78,42 @@ def RSVP_to_event():
 
 
 	
+
+
+#please override this when you figure out how to dict-ify a string
+@app.route('/comment', methods=['POST'])
+def comment_on_events():
+	
+	try:
+		comments_username = request.get_json()["username"]
+		comments_password = request.get_json()["password"]
+		comments_PUUID = request.get_json()["PUIID"]
+		comments_comments = request.get_json()["comments"]
+	except BaseException as e:
+		print(e)
+		return 400
+
+	#check if the user is in the system
+	comments_UUUID = udb.get_user_by_username(post_username)
+	if (comments_UUUID == 400):
+		return 400
+			
 	
 
-
-@app.route('/', methods=['GET'])
+	actual_password = udb.get_user_attr(comments_UUUID, "password")
+	if (actual_password == comments_password):
+		#Access Granted
+		comments_string = pdb.get_post_attr(comments_PUUID, "comments")
+		if type(comments_string) is not str:
+			return 400
+		
+		comments_string = comments_string + "\n" + comments_comments + "\n" + comments_username
+		pbd.set_post_attr(comments_PUUID, "comments", comments_string)
+		#Updated comments
+	
+	return 200
+	
+app.route('/', methods=['GET'])
 def index():
 	return """
 	Hey howdy hey!

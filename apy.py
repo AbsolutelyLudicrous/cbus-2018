@@ -30,21 +30,21 @@ def add_post():
 		print(e)
 		return 400
 
-	
 	post_UUUID = udb.get_user_by_username(post_username)
 	if (post_UUUID == 400):
 		return 400
 
-
 	actual_password = udb.get_user_attr(post_UUUID, "password")
 	if (actual_password == post_password):
 		#access granted
-				
-		recruit_PUUID=	str(abs(hash(str(abs(int(str(hash(datetime.datetime.now))+str(random.randint(1, 9999999999999999))))))))
-		pdb.add_post(recruit_PUUID, post_title, post_username, post_contents, post_tags)
+		PUUID=str(abs(hash(str(abs(int(str(hash(datetime.datetime.now))+str(random.randint(1, 9999999999999999))))))))
+		pdb.add_post(	PUUID,
+				post_title,
+				post_username,
+				post_contents,
+				post_tags
+		)
 
-			
-		
 
 
 @app.route('/', methods=['GET'])
@@ -68,10 +68,12 @@ def sayHi(username):
 	return "Hello " + username
 
 
+
 @app.route('/get-events-by-tag/<tags>', methods=['GET'])
 def get_events_by_tags_abstract(tags):
-	the_events = pbd.get_events_by_tag(tags)
-	return the_events
+	return pbd.get_events_by_tag(tags)
+
+
 
 @app.route('/echo', methods=['POST'])
 def echo():

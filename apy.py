@@ -107,7 +107,7 @@ def comment_on_events():
 		if type(comments_string) is not str:
 			return 400
 		
-		comments_string = comments_string + "\n" + comments_comments + "\n" + comments_username
+		comments_string = comments_string + "\n\n\n" + comments_comments + "\n" + comments_username
 		pbd.set_post_attr(comments_PUUID, "comments", comments_string)
 		#Updated comments
 	

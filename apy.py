@@ -46,6 +46,40 @@ def add_post():
 		)
 
 
+@app.route('/RSVP', methods=['POST'])
+def RSVP_to_event():
+	try:
+		RSVP_username = request.get_json()["username"]
+		RSVP_password = request.get_json()["password"]
+		RSVP_PUUID = request.get_json()["PUIID"]
+	except BaseException as e:
+		print(e)
+		return 400
+
+	#check if the user is in the system
+	RSVP_UUUID = udb.get_user_by_username(post_username)
+	if (RSVP_UUUID == 400):
+		return 400
+			
+	
+
+	actual_password = udb.get_user_attr(RSVP_UUUID, "password")
+	if (actual_password == RSVP_password):
+		#Access Granted
+		RSVP_string = pdb.get_post_attr(RSVP_PUUID, "RSVPers")
+		if type(RSVP_string) is not str:
+			return 400
+		
+		RSVP_string = RSVP_string + "\n" + RSVP_username
+		pbd.set_post_attr(RSVP_PUUID, "RSVPers", RSVP_string)
+		#Updated RSVPers
+	
+	return 200
+
+
+	
+	
+
 
 @app.route('/', methods=['GET'])
 def index():
@@ -59,7 +93,7 @@ def index():
 @app.route('/howdy', methods=['GET'])
 @app.route('/yeehaw', methods=['GET'])
 def yeehaw():
-	return "Yeehaw!"
+	return "Yeehaw!" 
 
 
 

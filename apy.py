@@ -87,7 +87,7 @@ def comment_on_events():
 	try:
 		comments_username = request.get_json()["username"]
 		comments_password = request.get_json()["password"]
-		comments_PUUID = request.get_json()["PUIID"]
+		comments_PUUID = request.get_json()["PUUID"]
 		comments_comments = request.get_json()["comments"]
 	except BaseException as e:
 		print(e)

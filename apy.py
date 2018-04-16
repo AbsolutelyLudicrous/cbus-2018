@@ -104,9 +104,12 @@ def comment_on_events():
 		comments_string = pdb.get_post_attr(comments_PUUID, "comments")
 		if type(comments_string) is not str:
 			return 400
-
-		comments_string = comments_string + "\n\n\n" + comments_comments + "\n" + comments_username
-		pbd.set_post_attr(comments_PUUID, "comments", comments_string)
+		comment = {
+			"commenter":comments_username,
+			"parent_post":comments_PUUID,
+			"body":comments_comments
+		}	# dict representation of a comment
+		pbd.set_post_attr(comments_PUUID, "comments", str(comment))
 		#Updated comments
 
 	return 200

@@ -30,6 +30,8 @@ def add_post():
 		print(e)
 		return 400
 
+	# this is hacky and ugly and I'm sorry
+
 	post_UUUID = udb.get_user_by_username(post_username)
 	if (post_UUUID == 400):
 		return 400
@@ -44,6 +46,8 @@ def add_post():
 				post_contents,
 				post_tags
 		)
+
+	return 200
 
 
 @app.route('/RSVP', methods=['POST'])
@@ -107,7 +111,7 @@ def comment_on_events():
 
 	return 200
 
-app.route('/', methods=['GET'])
+@app.route('/', methods=['GET'])
 def index():
 	return """
 	Hey howdy hey!

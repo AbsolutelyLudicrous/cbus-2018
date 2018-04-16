@@ -51,7 +51,7 @@ def RSVP_to_event():
 	try:
 		RSVP_username = request.get_json()["username"]
 		RSVP_password = request.get_json()["password"]
-		RSVP_PUUID = request.get_json()["PUIID"]
+		RSVP_PUUID = request.get_json()["PUUID"]
 	except BaseException as e:
 		print(e)
 		return 400
@@ -60,8 +60,6 @@ def RSVP_to_event():
 	RSVP_UUUID = udb.get_user_by_username(post_username)
 	if (RSVP_UUUID == 400):
 		return 400
-			
-	
 
 	actual_password = udb.get_user_attr(RSVP_UUUID, "password")
 	if (actual_password == RSVP_password):
@@ -69,21 +67,19 @@ def RSVP_to_event():
 		RSVP_string = pdb.get_post_attr(RSVP_PUUID, "RSVPers")
 		if type(RSVP_string) is not str:
 			return 400
-		
+
 		RSVP_string = RSVP_string + "\n" + RSVP_username
 		pbd.set_post_attr(RSVP_PUUID, "RSVPers", RSVP_string)
 		#Updated RSVPers
-	
+
 	return 200
 
 
-	
 
 
 #please override this when you figure out how to dict-ify a string
 @app.route('/comment', methods=['POST'])
 def comment_on_events():
-	
 	try:
 		comments_username = request.get_json()["username"]
 		comments_password = request.get_json()["password"]
@@ -97,8 +93,6 @@ def comment_on_events():
 	comments_UUUID = udb.get_user_by_username(post_username)
 	if (comments_UUUID == 400):
 		return 400
-			
-	
 
 	actual_password = udb.get_user_attr(comments_UUUID, "password")
 	if (actual_password == comments_password):
@@ -106,13 +100,13 @@ def comment_on_events():
 		comments_string = pdb.get_post_attr(comments_PUUID, "comments")
 		if type(comments_string) is not str:
 			return 400
-		
+
 		comments_string = comments_string + "\n\n\n" + comments_comments + "\n" + comments_username
 		pbd.set_post_attr(comments_PUUID, "comments", comments_string)
 		#Updated comments
-	
+
 	return 200
-	
+
 app.route('/', methods=['GET'])
 def index():
 	return """
@@ -125,7 +119,7 @@ def index():
 @app.route('/howdy', methods=['GET'])
 @app.route('/yeehaw', methods=['GET'])
 def yeehaw():
-	return "Yeehaw!" 
+	return "Yeehaw!"
 
 
 

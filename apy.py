@@ -144,6 +144,14 @@ def echo():
 
 
 
+
+@app.route('/get_event/<PUUID>', methods=['GET'])
+@app.route('/get_post/<PUUID>', methods=['GET'])
+def get_event_by_puuid(PUUID):
+	return pdb.get_post(PUUID)
+
+
+
 @app.route('/signup', methods=['POST'])
 def mkuser():
 	"""

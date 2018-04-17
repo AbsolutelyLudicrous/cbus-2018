@@ -58,7 +58,7 @@ def add_post(p,title=None,owner=None,contents=None,tags=None):
 	try:
 		posts.execute('''
 			INSERT INTO posts (PUUID, title, owner, contents, comments, RSVPers, tags)
-			VALUES (?,?,?,?,?);
+			VALUES (?,?,?,?,?,?,?);
 			''',(p,title,owner,contents,"","",tags)
 		)
 	except BaseException as e:

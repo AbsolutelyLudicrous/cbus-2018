@@ -138,8 +138,23 @@ def sayHi(username):
 
 @app.route('/get-events-by-tag/<tags>', methods=['GET'])
 def get_events_by_tags_abstract(tags):
-	return pbd.get_events_by_tag(tags)
 
+	the_list = pbd.get_events_by_tag(tags)
+	return_json_list = []
+	for i in range(len(the_list)):
+		PUUID = the_list[i][0]
+		title = the_list[i][1]
+		owner = the_list[i][2]
+		contents = the_list[i][3]
+		comments = the_list[i][4]
+		RSVPers = the_list[i][5]
+		tags = the_list[i][6]
+		
+		json_data = '{"PUUID": "' + PUUID + '", "title": "' + title + '"owner": "' + owner + '", "contents": "' + contents + '", "comments": "' + comments + '", "RSVPers": "' + RSVPers + '", "tags": "' + tags + '"}'
+
+		return_json_list.append(json_list)
+
+	return return_json_list
 
 
 @app.route('/echo', methods=['POST'])

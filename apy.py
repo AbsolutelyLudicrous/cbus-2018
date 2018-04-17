@@ -251,7 +251,8 @@ if __name__ == '__main__':
 			app.run(
 				debug=config.is_debug,
 				host=config.system_ip,
-				port=config.port
+				port=config.port,
+				ssl_context=config.https
 			)
 		except BaseException as e:
 			try:

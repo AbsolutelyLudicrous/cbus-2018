@@ -152,7 +152,8 @@ def get_events_by_tags_abstract(tags):
 		
 		json_data = '{"PUUID": "' + PUUID + '", "title": "' + title + '"owner": "' + owner + '", "contents": "' + contents + '", "comments": "' + comments + '", "RSVPers": "' + RSVPers + '", "tags": "' + tags + '"}'
 
-		return_json_list.append(json_list)
+	
+		return_json_list.append(json.loads(json_data))
 
 	return return_json_list
 
@@ -170,8 +171,18 @@ def echo():
 @app.route('/get_event/<PUUID>', methods=['GET'])
 @app.route('/get_post/<PUUID>', methods=['GET'])
 def get_event_by_puuid(PUUID):
-	return pdb.get_post(PUUID)
+	the_list = pdb.get_event(PUUID)
+	PUUID = the_list[0]
+	title = the_list[1]
+	owner = the_list[2]
+	contents = the_list[3]
+	comments = the_list[4]
+	RSVPers = the_list[5]
+	tags = the_list[6]
+		
+	json_data = '{"PUUID": "' + PUUID + '", "title": "' + title + '"owner": "' + owner + '", "contents": "' + contents + '", "comments": "' + comments + '", "RSVPers": "' + RSVPers + '", "tags": "' + tags + '"}'
 
+	return json.loads(json_data)
 
 
 @app.route('/signup', methods=['POST'])

@@ -37,5 +37,8 @@ for i in range(0,30):
 				random.randint(0,32):chr(random.randint(62,122))
 			}
 		)),	#contents
-		(chr(random.randint(62,122)))	#tags
+		str(
+                    (chr(random.randint(62,122))),	#tags
+                    "stuff"
+                )
 	)

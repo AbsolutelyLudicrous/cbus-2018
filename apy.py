@@ -138,7 +138,9 @@ def sayHi(username):
 
 @app.route('/get-events-by-tag/<tags>', methods=['GET'])
 def get_events_by_tags_abstract(tags):
+	print("Getting event from tags")
 	the_list = pdb.get_events_by_tag(tags)
+	print(the_list)
 	return_json_list = []
 	for i in the_list:
 		PUUID = i[0]

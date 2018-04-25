@@ -141,19 +141,19 @@ def get_events_by_tags_abstract(tags):
 
 	the_list = pdb.get_events_by_tag(tags)
 	return_json_list = []
-	for i in range(len(the_list)):
-		PUUID = the_list[i][0]
-		title = the_list[i][1]
-		owner = the_list[i][2]
-		contents = the_list[i][3]
-		comments = the_list[i][4]
-		RSVPers = the_list[i][5]
-		tags = the_list[i][6]
-		
+	for i in the_list:
+		PUUID = i[0]
+		title = i[1]
+		owner = i[2]
+		contents = i[3]
+		comments = i[4]
+		RSVPers = i[5]
+		tags = i[6]
+
 		json_data = '{"PUUID": "' + PUUID + '", "title": "' + title + '"owner": "' + owner + '", "contents": "' + contents + '", "comments": "' + comments + '", "RSVPers": "' + RSVPers + '", "tags": "' + tags + '"}'
 
 	
-		return_json_list.append(json.loads(json_data))
+		return_json_list.append((json_data))
 
 	return return_json_list
 

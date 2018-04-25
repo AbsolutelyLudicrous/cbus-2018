@@ -207,7 +207,7 @@ def get_events_by_tag(tags):
 			tags = tags[2:]
 		else:
 			#tags is empty
-			scores.append(tags)			
+			list_events.append(tags)			
 			tags = ""
 	
 	list_events = []

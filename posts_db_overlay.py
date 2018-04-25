@@ -198,6 +198,7 @@ def set_post_attr(p,attr,val):
 
 
 def get_events_by_tag(tags):
+	print("Events are being gotten by their tags")
 	list_tags = []
 	while (len(tags) > 0):
 		if ',' in tags:		

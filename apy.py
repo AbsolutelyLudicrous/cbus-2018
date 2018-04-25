@@ -73,7 +73,7 @@ def RSVP_to_event():
 			return 400
 
 		RSVP_string = RSVP_string + "\n" + RSVP_username
-		pbd.set_post_attr(RSVP_PUUID, "RSVPers", RSVP_string)
+		pdb.set_post_attr(RSVP_PUUID, "RSVPers", RSVP_string)
 		#Updated RSVPers
 
 	return 200
@@ -109,7 +109,7 @@ def comment_on_events():
 			"parent_post":comments_PUUID,
 			"body":comments_comments
 		}	# dict representation of a comment
-		pbd.set_post_attr(comments_PUUID, "comments", str(comment))
+		pdb.set_post_attr(comments_PUUID, "comments", str(comment))
 		#Updated comments
 
 	return 200
@@ -139,7 +139,7 @@ def sayHi(username):
 @app.route('/get-events-by-tag/<tags>', methods=['GET'])
 def get_events_by_tags_abstract(tags):
 
-	the_list = pbd.get_events_by_tag(tags)
+	the_list = pdb.get_events_by_tag(tags)
 	return_json_list = []
 	for i in range(len(the_list)):
 		PUUID = the_list[i][0]

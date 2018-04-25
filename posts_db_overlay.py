@@ -213,7 +213,6 @@ def get_events_by_tag(tags):
 	list_events = []
 
 	for i in range(0, len(list_tags)):
-			
 		posts.execute('''
 			SELECT * FROM posts
 			WHERE tags LIKE '*?*';

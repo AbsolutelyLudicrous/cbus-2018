@@ -216,7 +216,7 @@ def get_events_by_tag(tags):
 	for i in range(0, len(list_tags)):
 		posts.execute('''
 			SELECT * FROM posts
-			WHERE tags LIKE ?;
+			WHERE tags CONTAINS ?;
 			''',(list_tags[i],)
 		)
 	

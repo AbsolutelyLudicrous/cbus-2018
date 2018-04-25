@@ -222,6 +222,7 @@ def get_events_by_tag(tags):
 	
 		retrieved_posts=posts.fetchall()
 		list_events.append(retrieved_posts)
+                print(retrieved_posts)
 
 	return_list = []
 	for i in range(0, 50):

@@ -151,7 +151,7 @@ def get_events_by_tags_abstract(tags):
 		RSVPers = i[5]
 		tags = i[6]
 
-		json_data = '{"PUUID": "' + PUUID + '", "title": "' + title + '"owner": "' + owner + '", "contents": "' + contents + '", "comments": "' + comments + '", "RSVPers": "' + RSVPers + '", "tags": "' + tags + '"}'
+		json_data = '{"PUUID": "' + PUUID + '", "title": "' + title + '"owner": "' + owner + '", "contents": "' + contents + '", "comments": "' + comments + '", "RSVPers": "' + RSVPers + '", "tags": "' + tags + ", stuff" + '"}'
 
 	
 		return_json_list.append((json_data))

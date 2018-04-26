@@ -157,14 +157,13 @@ def get_events_by_tags_abstract(tags):
 
 		json_data = f'''
 			{	
-				"PUUID": "' + PUUID + '",
-				"title": "' + title + ',
-				"owner": "' + owner + '",
-				"contents": "' + contents + '",
-				"comments": "' + comments + '",
-				"RSVPers": "' + RSVPers + '",
-				"tags": "' + tags + ',
-				"stuff"' + '
+				"PUUID": {PUUID},
+				"title": {title},
+				"owner": {owner},
+				"contents": {contents},
+				"comments": {comments},
+				"RSVPers": {RSVPers},
+				"tags": {tags}+stuff
 			}
 		'''
 		return_json_arr = return_json_arr + json_data + ", "

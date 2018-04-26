@@ -139,7 +139,10 @@ def sayHi(username):
 @app.route('/get-events-by-tag/<tags>', methods=['GET'])
 def get_events_by_tags_abstract(tags):
 	print("Getting event from tags")
+	print(tags)
 	the_list = pdb.get_events_by_tag(tags)
+	return_json_arr = '['	
+
 	print(the_list)
 	return_json_list = []
 	for i in the_list:
@@ -151,11 +154,13 @@ def get_events_by_tags_abstract(tags):
 		RSVPers = i[5]
 		tags = i[6]
 
-		json_data = '{"PUUID": "' + PUUID + '", "title": "' + title + '"owner": "' + owner + '", "contents": "' + contents + '", "comments": "' + comments + '", "RSVPers": "' + RSVPers + '", "tags": "' + tags + ", stuff" + '"}'
+		json_data = '\\n{\\n"PUUID": "' + PUUID + '",\\n\\n"title": "' + title + ',\\n\\n"owner": "' + owner + '",\\n\\n"contents": "' + contents + '",\\n\\n"comments": "' + comments + '",\\n\\n"RSVPers": "' + RSVPers + '",\\n\\n"tags": "' + tags + ',\\n\\n"stuff"' + '}'
+		return_json_arr = return_json_arr + json_data + ", "
+
+	return_json_arr = return_json_arr[0:len(return_json_arr) - 2] + "]" 
 
 	
-		return_json_list.append((json_data))
-	return the_list
+	return return_json_arr
 #	return return_json_list
 
 

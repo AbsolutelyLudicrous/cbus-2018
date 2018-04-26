@@ -210,7 +210,7 @@ def get_events_by_tag(tags):
 			#tags is empty
 			list_tags.append(tags)			
 			tags = ""
-	
+	"""	
 	list_events = []
 
 	for i in range(0, len(list_tags)):
@@ -223,21 +223,40 @@ def get_events_by_tag(tags):
 		retrieved_posts=posts.fetchall()
 		list_events.append(retrieved_posts)
 		print(retrieved_posts)
+	"""
+	all_events = []
+	for row in posts.execute('SELECT *  FROM posts;'):
+		all_events.append(row)
 
+	events_for_all_tags = []
+	for tag in list_tags:
+		for row in all_events:
+			 if tag in row[6]:
+			 	events_for_all_tags.append(row)
+	
 	return_list = []
+
+	for i in range(50):
+		return_list.append(random.choice(events_for_all_tags))
+
+	
+	"""
 	for i in range(0, 50):
 		the_event = random.choice(random.choice(list_events))
 		return_list.append(the_event)
+	"""
+	return return_list	
 
 	while i < (len(return_list) - 1):
 		j = i+1
 		while j < len(return_list):
 			if (return_list[i][posts_schema.index("PUUID")] == return_list[j][posts_schema.index("PUUID")]):
 				return_list.pop(j)
+				continue
 			j += 1
 		i += 1
 
-	return return_list
+	#return return_list
 
 
 

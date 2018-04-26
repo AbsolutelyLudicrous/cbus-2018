@@ -197,7 +197,17 @@ def get_event_by_puuid(PUUID):
 	RSVPers = the_list[5]
 	tags = the_list[6]
 
-	json_data = '{"PUUID": "' + PUUID + '", "title": "' + title + '"owner": "' + owner + '", "contents": "' + contents + '", "comments": "' + comments + '", "RSVPers": "' + RSVPers + '", "tags": "' + tags + '"}'
+	json_data = '''
+		{
+			"PUUID": "'''+ PUUID + '''",
+			"title": "''' + title + '''",
+			"owner": "''' + owner + '''",
+			"contents": "''' + contents + '''",
+			"comments": "''' + comments + '''",
+			"RSVPers": "''' + RSVPers + '''",
+			"tags": "''' + tags + '''"
+		}
+	'''
 
 	return json.loads(json_data)
 

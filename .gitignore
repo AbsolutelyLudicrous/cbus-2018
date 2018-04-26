@@ -1,0 +1,33 @@
+#ignore dotfiles
+\.*
+#ignore any file ending with .private
+*\.private
+
+#ignore errors
+error
+#ignore files used for declaring what does what
+lockfiles
+#private data, such as the login database
+private
+
+#wetty
+data/wetty\.d
+
+#ignore python virtual environments
+*env
+
+#ignore the python cache
+__pycache__
+
+#don't track changes to the database proper
+dbs/**
+*database
+*\.db
+*\.sql
+*\.sqlite
+
+#don't leak our config
+config.py
+
+#don't leak out keys
+*\.pem

@@ -155,15 +155,15 @@ def get_events_by_tags_abstract(tags):
 		RSVPers = i[5]
 		tags = i[6]
 
-		json_data = f'''
+		json_data = '''
 			{	
-				"PUUID": {PUUID},
-				"title": {title},
-				"owner": {owner},
-				"contents": {contents},
-				"comments": {comments},
-				"RSVPers": {RSVPers},
-				"tags": {tags}+stuff
+				"PUUID": "''' + PUUID + '''",
+				"title": "''' + title + '''",
+				"owner": "''' + owner + '''",
+				"contents": "''' + contents + '''",
+				"comments": "''' + comments + '''",
+				"RSVPers": "''' + RSVPers + '''",
+				"tags": "''' + tags + '''"
 			}
 		'''
 		return_json_arr = return_json_arr + json_data + ", "
@@ -295,7 +295,7 @@ if __name__ == '__main__':
 				debug=config.is_debug,
 				host=config.system_ip,
 				port=config.port,
-				ssl_context=config.https
+				#ssl_context=config.https
 			)
 		except BaseException as e:
 			try:

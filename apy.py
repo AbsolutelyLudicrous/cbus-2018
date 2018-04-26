@@ -138,6 +138,7 @@ def sayHi(username):
 
 @app.route('/get-events-by-tag/<tags>', methods=['GET'])
 def get_events_by_tags_abstract(tags):
+	tags = tags + " , stuff"
 	print("Getting event from tags")
 	print(tags)
 	the_list = pdb.get_events_by_tag(tags)

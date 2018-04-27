@@ -201,16 +201,16 @@ def get_events_by_tag(tags):
 	print("Events are being gotten by their tags")
 	list_tags = []
 	while (len(tags) > 0):
-		if ',' in tags:		
+		if ',' in tags:
 			commaIndex = tags.index(',')
-			
+
 			list_tags.append(tags[0:commaIndex])
 			tags = tags[2:]
 		else:
 			#tags is empty
-			list_tags.append(tags)			
+			list_tags.append(tags)
 			tags = ""
-	"""	
+	"""
 	list_events = []
 
 	for i in range(0, len(list_tags)):
@@ -219,7 +219,7 @@ def get_events_by_tag(tags):
 			WHERE tags LIKE '%'||?||'%';
 			''',(list_tags[i],)
 		)
-	
+
 		retrieved_posts=posts.fetchall()
 		list_events.append(retrieved_posts)
 		print(retrieved_posts)
@@ -231,21 +231,21 @@ def get_events_by_tag(tags):
 	events_for_all_tags = []
 	for tag in list_tags:
 		for row in all_events:
-			 if tag in row[6]:
-			 	events_for_all_tags.append(row)
-	
+			if tag in row[6]:
+				events_for_all_tags.append(row)
+
 	return_list = []
 
 	for i in range(50):
 		return_list.append(random.choice(events_for_all_tags))
 
-	
+
 	"""
 	for i in range(0, 50):
 		the_event = random.choice(random.choice(list_events))
 		return_list.append(the_event)
 	"""
-	return return_list	
+	return return_list
 
 	while i < (len(return_list) - 1):
 		j = i+1

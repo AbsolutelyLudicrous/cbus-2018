@@ -188,7 +188,7 @@ def echo():
 @app.route('/get_event/<PUUID>', methods=['GET'])
 @app.route('/get_post/<PUUID>', methods=['GET'])
 def get_event_by_puuid(PUUID):
-	the_list = pdb.get_event(PUUID)
+	the_list = pdb.get_post(PUUID)
 	PUUID = the_list[0]
 	title = the_list[1]
 	owner = the_list[2]
@@ -209,7 +209,7 @@ def get_event_by_puuid(PUUID):
 		}
 	'''
 
-	return json.loads(json_data)
+	return json_data
 
 
 @app.route('/signup', methods=['POST'])
